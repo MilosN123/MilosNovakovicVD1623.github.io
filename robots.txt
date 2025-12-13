@@ -2,5 +2,6 @@ User-agent: *
 Disallow:
 
 # Lokacija XML sitemapa
-Sitemap: https://milosn123.github.io/MilosNovakovicVD16-23.github.io/sitemap.xml
+Sitemap: https://milosn123.github.io/MilosNovakovicVD1623.github.io/sitemap.xml
+
 
