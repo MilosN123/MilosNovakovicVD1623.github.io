@@ -1,7 +1,8 @@
+# Robots.txt za Turistički sajt IJA
 User-agent: *
 Disallow:
 
-# Lokacija XML sitemapa
 Sitemap: https://milosn123.github.io/MilosNovakovicVD1623.github.io/sitemap.xml
+
 
 
