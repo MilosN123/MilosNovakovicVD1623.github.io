@@ -1,0 +1,296 @@
+/* =========================
+   GLOBALNI STILOVI
+========================= */
+body {
+    background-color: antiquewhite;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+}
+
+body, h1, h2, h3, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+/* =========================
+   NAVIGACIJA
+========================= */
+.nav {
+    background-color: #2C3E50;
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+.nav:hover {
+    background-color: #1A252F;
+}
+
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nav ul li {
+    margin: 0 20px;
+}
+
+.nav ul li a {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav ul li a:hover {
+    color: #18BC9C;
+    background-color: rgba(24,188,156,0.1);
+    border-color: #18BC9C;
+}
+
+/* =========================
+   MAIN I DESTINACIJE
+========================= */
+main {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.intro {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.intro h1 {
+    font-size: 36px;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    animation: slideIn 1.5s ease-in-out;
+}
+
+.intro p {
+    font-size: 18px;
+    color: #555;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Kartice destinacija */
+.destination {
+    width: 48%;
+    margin-bottom: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: zoomIn 1.5s ease-in-out;
+}
+
+.destination:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.destination img {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.destination img:hover {
+    transform: scale(1.05);
+}
+
+.destination h2 {
+    font-size: 26px;
+    color: #2C3E50;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.destination h2:hover {
+    color: #18BC9C;
+}
+
+.destination h3 {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.destination p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.destination a {
+    color: #18BC9C;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.destination a:hover {
+    color: #007BFF;
+}
+
+/* =========================
+   POPULARNE DESTINACIJE
+========================= */
+.popularne-destinacije {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border: 1px solid #cce;
+    border-radius: 10px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.popularne-destinacije h3 {
+    font-size: 22px;
+    color: #2C3E50;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.popularne-destinacije ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #333;
+    font-size: 17px;
+}
+
+.popularne-destinacije li {
+    padding: 6px 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+    background-color: #2C3E50;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 2px solid #18BC9C;
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+}
+
+.footer:hover {
+    background-color: #1A252F;
+}
+
+.footer h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footer ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer ul li {
+    margin: 0 15px;
+}
+
+.footer ul li a {
+    color: #18BC9C;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.footer ul li a:hover {
+    color: #ffffff;
+    background-color: #18BC9C;
+}
+
+/* =========================
+   RESPONSIVNOST
+========================= */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .destination {
+        width: 100%;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav ul li {
+        margin: 10px 0;
+    }
+
+    .footer ul {
+        flex-direction: column;
+    }
+
+    .footer ul li {
+        margin: 10px 0;
+    }
+}
+
+/* =========================
+   ANIMACIJE
+========================= */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
