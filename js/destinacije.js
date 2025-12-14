@@ -1,88 +1,64 @@
-const destinacije = ["Barselona", "Budimpešta", "Dubai", "Pariz", "Prag", "Moskva", "Istanbul", "Maldivi", "London", "Madrid"];
+const destinacije=["Barselona","Budimpešta","Dubai","Pariz","Prag","Moskva","Istanbul","Maldivi","London","Madrid"];
 
-function filtrirajDestinacije(slovo) {
-    return destinacije.filter(dest => dest.startsWith(slovo));
-}
-
-function brojSlova(naziv) {
-    return naziv.replace(/\s/g, "").length;
-}
+const filtrirajDestinacije=slovo=>destinacije.filter(d=>d.startsWith(slovo));
+const brojSlova=naziv=>naziv.replace(/\s/g,"").length;
 
 console.log(filtrirajDestinacije("M"));
 console.log(brojSlova("Maldivi"));
 
-const lista = document.createElement("ul");
-lista.classList.add("popularna-lista");
-for (let i = 0; i < destinacije.length; i++) {
-    const li = document.createElement("li");
-    li.textContent = destinacije[i];
+const lista=document.createElement("ul");
+lista.className="popularna-lista";
+destinacije.forEach(d=>{
+  const li=document.createElement("li");
+  li.textContent=d;
+  lista.appendChild(li);
+});
+
+const poruka=document.createElement("p");
+poruka.textContent=destinacije.includes("Pariz")
+  ?"Pariz je među najpopularnijim destinacijama."
+  :"Dodajte Pariz u listu destinacija.";
+
+const destinacijeDiv=document.createElement("div");
+destinacijeDiv.className="popularne-destinacije";
+destinacijeDiv.innerHTML="<h3>Popularne destinacije:</h3>";
+destinacijeDiv.append(lista,poruka);
+
+const brojDestinacija=document.createElement("div");
+brojDestinacija.className="broj-destinacija";
+brojDestinacija.innerHTML=`<h4>Ukupno destinacija: ${destinacije.length}</h4>`;
+
+const forma=document.createElement("form");
+forma.className="forma-destinacije";
+forma.innerHTML=`<input type="text" id="ime" placeholder="Unesite destinaciju"><button type="submit">Dodaj</button>`;
+
+forma.addEventListener("submit",e=>{
+  e.preventDefault();
+  const unos=document.getElementById("ime").value.trim();
+  if(unos){
+    destinacije.push(unos);
+    const li=document.createElement("li");
+    li.textContent=unos;
     lista.appendChild(li);
-}
-
-const poruka = document.createElement("p");
-if (destinacije.includes("Pariz")) {
-    poruka.textContent = "Pariz je među najpopularnijim destinacijama.";
-} else {
-    poruka.textContent = "Dodajte Pariz u listu destinacija.";
-}
-
-const destinacijeDiv = document.createElement("div");
-destinacijeDiv.classList.add("popularne-destinacije");
-destinacijeDiv.innerHTML = "<h3>Popularne destinacije:</h3>";
-destinacijeDiv.appendChild(lista);
-destinacijeDiv.appendChild(poruka);
-
-document.addEventListener("DOMContentLoaded", function () {
-    const footer = document.querySelector("footer");
-    if (footer) {
-        document.body.insertBefore(destinacijeDiv, footer);
-    } else {
-        document.body.appendChild(destinacijeDiv);
-    }
-
-    document.body.insertBefore(brojDestinacija, destinacijeDiv);
-    document.body.insertBefore(forma, destinacijeDiv);
+    brojDestinacija.innerHTML=`<h4>Ukupno destinacija: ${destinacije.length}</h4>`;
+  }
 });
 
-document.querySelector("h1").addEventListener("click", function () {
-    this.style.color = "crimson";
+document.addEventListener("DOMContentLoaded",()=>{
+  const footer=document.querySelector("footer");
+  document.body.insertBefore(brojDestinacija,footer||null);
+  document.body.insertBefore(forma,footer||null);
+  document.body.insertBefore(destinacijeDiv,footer||null);
 });
 
-const slike = document.querySelectorAll("img");
-slike.forEach(slika => {
-    slika.addEventListener("mouseover", function () {
-        this.style.border = "3px solid gold";
-    });
-    slika.addEventListener("mouseout", function () {
-        this.style.border = "none";
-    });
+document.querySelector("h1")?.addEventListener("click",e=>{
+  e.target.style.color="crimson";
 });
 
-const forma = document.createElement("form");
-forma.innerHTML = `
-    <input type="text" id="ime" placeholder="Unesite destinaciju">
-    <button type="submit">Dodaj</button>
-`;
-forma.classList.add("forma-destinacije");
-
-forma.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const unos = document.getElementById("ime").value.trim();
-    if (unos.length > 0) {
-        destinacije.push(unos);
-        const nova = document.createElement("li");
-        nova.textContent = unos;
-        lista.appendChild(nova);
-        brojDestinacija.innerHTML = `<h4>Ukupno destinacija: ${destinacije.length}</h4>`;
-    }
+document.querySelectorAll("img").forEach(img=>{
+  img.addEventListener("mouseover",()=>img.style.border="3px solid gold");
+  img.addEventListener("mouseout",()=>img.style.border="none");
 });
 
-const velikaSlova = destinacije.map(d => d.toUpperCase());
-console.log(velikaSlova);
-
-const sortirane = [...destinacije].sort();
-console.log(sortirane);
-
-const brojDestinacija = document.createElement("div");
-brojDestinacija.innerHTML = `<h4>Ukupno destinacija: ${destinacije.length}</h4>`;
-brojDestinacija.classList.add("broj-destinacija");
+console.log(destinacije.map(d=>d.toUpperCase()));
+console.log([...destinacije].sort());
