@@ -1,48 +1,33 @@
-
 let destinacijeDiv = document.createElement("div");
 destinacijeDiv.style.marginTop = "30px";
-destinacijeDiv.innerHTML = "<h3>Popularne destinacije:</h3><ul>" +
-  filtrirane.map(dest => `<li>${dest}</li>`).join("") +
-  "</ul>";
+destinacijeDiv.innerHTML = "<h3>Popularne destinacije:</h3><ul>" + filtrirane.map(dest => `<li>${dest}</li>`).join("") + "</ul>";
 
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
   let footer = document.querySelector("footer");
-  if (footer) {
-    document.body.insertBefore(destinacijeDiv, footer);
-  } else {
-    document.body.appendChild(destinacijeDiv); 
-  }
+  if (footer) document.body.insertBefore(destinacijeDiv, footer);
+  else document.body.appendChild(destinacijeDiv);
 });
 
 function validacijaPolja(vrednost) {
-  return vrednost.trim().length > 0 && vrednost.length >= 3;
+  return vrednost.trim().length >= 3;
 }
-
 
 function generisiPoruku(ime) {
-  let velikoIme = ime.charAt(0).toUpperCase() + ime.slice(1); 
-  return `Hvala na poruci, ${velikoIme}!`;
+  return `Hvala na poruci, ${ime.charAt(0).toUpperCase() + ime.slice(1)}!`;
 }
 
-const forma = document.querySelector("form");
-const imeInput = document.getElementById("name");
-const emailInput = document.getElementById("email");
-const porukaInput = document.getElementById("message");
+const forma = document.querySelector("form"),
+      imeInput = document.getElementById("name"),
+      emailInput = document.getElementById("email"),
+      porukaInput = document.getElementById("message");
 
-
-forma.addEventListener("submit", function (e) {
+forma.addEventListener("submit", function(e) {
   e.preventDefault();
-
-  let ime = imeInput.value;
-  let email = emailInput.value;
-  let poruka = porukaInput.value;
-
+  let ime = imeInput.value, email = emailInput.value, poruka = porukaInput.value;
   if (!validacijaPolja(ime) || !validacijaPolja(email) || !validacijaPolja(poruka)) {
     alert("Sva polja moraju imati najmanje 3 karaktera.");
     return;
   }
-
   forma.style.border = "2px solid green";
   forma.style.backgroundColor = "#e0ffe0";
 
@@ -51,14 +36,9 @@ forma.addEventListener("submit", function (e) {
   porukaDiv.style.padding = "10px";
   porukaDiv.style.backgroundColor = "#dff0d8";
   porukaDiv.textContent = generisiPoruku(ime);
-
   document.body.appendChild(porukaDiv);
 });
 
-imeInput.addEventListener("mouseover", function () {
-  imeInput.style.backgroundColor = "#e6f7ff";
-});
+imeInput.addEventListener("mouseover", () => imeInput.style.backgroundColor = "#e6f7ff");
+imeInput.addEventListener("mouseout", () => imeInput.style.backgroundColor = "#fff");
 
-imeInput.addEventListener("mouseout", function () {
-  imeInput.style.backgroundColor = "#fff";
-});
